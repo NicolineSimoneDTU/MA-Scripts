@@ -20,7 +20,7 @@ scenario:
   planning_horizons:
   - 2025 # setting horizon to 2025
 
-countries: ['NL', 'DE', 'DK', 'SE', 'NO', 'FI', 'GB']
+countries: ['NL', 'DE', 'DK', 'SE', 'NO', 'FI', 'GB'] # included countries
 
 snapshots:
   start: "2013-01-01"
@@ -28,13 +28,13 @@ snapshots:
 
 electricity:
   co2limit_enable: true # using an limit based on EU emission and system laod
-  co2limit: 5.46e+9 # limit based on pr country emission intensity (2023) --> for EU-27 average the limit is 1.55e10 kg
+  co2limit: 5.46e+9 # limit based on pr country emission intensity (2023)
 
   extendable_carriers:
-    Generator: [] #[solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, OCGT, CCGT, nuclear]
+    Generator: [] 
     StorageUnit: [battery] # only include battery to make it feasible
-    Store: [] # removed H2
-    Link: [] # removed H2 pipeline
+    Store: []
+    Link: []
 
   renewable_carriers: [solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, hydro] #adding hydro
   
@@ -59,23 +59,6 @@ atlite:
       y: [47.0, 72.0] 
       time: ["2013-01-01", "2013-12-31"]
 
-# atlite:
-#   default_cutout: europe-2013-03-sarah3-era5
-#   cutouts:
-#     europe-2013-03-sarah3-era5:
-#       module: era5
-#       x: [-12., 32.0]
-#       y: [47.0, 72.0] 
-#       time: ["2013-03-01", "2013-03-08"]
-
-# atlite:
-#   default_cutout: be-03-2013-era5
-#   cutouts:
-#     be-03-2013-era5:
-#       module: era5
-#       x: [4., 15.]
-#       y: [46., 56.]
-#       time: ["2013-03-01", "2013-03-02"]
 
 renewable:
   offwind-ac:
@@ -95,7 +78,6 @@ clustering:
 lines:
   dynamic_line_rating:
     activate: false
-    #max_line_rating: 1.3
 
 
 solving:
