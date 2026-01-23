@@ -1,0 +1,175 @@
+# SPDX-FileCopyrightText: Contributors to PyPSA-Eur <https://github.com/pypsa/pypsa-eur>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+#tutorial: true
+
+run:
+  name: "sector_2035_1y_2H" # use this to keep track of runs with different settings
+  disable_progressbar: true
+  shared_resources:
+    policy: false
+  shared_cutouts: true
+
+scenario:
+  clusters:
+  - 9
+  opts:
+  - ''
+  planning_horizons:
+  - 2035 # setting horizon to 2035
+
+countries: ['NL', 'DE', 'DK', 'SE', 'NO', 'FI', 'GB']
+
+
+snapshots:
+  start: "2013-01-01"
+  end: "2013-12-31"
+
+electricity:
+
+  extendable_carriers:
+    Generator: [solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, OCGT, CCGT]
+    StorageUnit: []
+    Store: [battery] # H2 #  consider removing this! just H2 in general.... - removed battery from Store 
+    Link: [] # H2 pipeline
+
+  renewable_carriers: [solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, hydro]
+
+  #conventional_carriers: [nuclear, oil, OCGT, CCGT, coal, lignite, geothermal, biomass] - is this nessesary?
+  #renewable_carriers: [solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, hydro] - should i add hydro?
+
+  transmission_limit: v1.0 #not vopt but v1.0 and then planned_no_yet_permitted in transmission projects
+
+
+atlite:
+  default_cutout: europe-2013-sarah3-era5
+  cutouts:
+    europe-2013-sarah3-era5:
+      module: era5
+      x: [-12., 32.0]
+      y: [47.0, 72.0] 
+      time: ["2013-01-01", "2013-12-31"]
+
+# atlite:
+#   default_cutout: be-03-2013-era5
+#   cutouts:
+#     be-03-2013-era5:
+#       module: era5
+#       x: [4., 15.]
+#       y: [46., 56.]
+#       time: ["2013-03-01", "2013-03-08"]
+
+renewable:
+  offwind-ac:
+    max_depth: false
+  offwind-dc:
+    max_depth: false
+  offwind-float:
+    max_depth: false
+    min_depth: false
+
+clustering:
+  temporal:
+    resolution_sector: 2H
+
+
+# transmission
+transmission_projects:
+  enable: true
+  include:
+    tyndp2020: true
+    nep: true
+    manual: true
+  skip:
+  - upgraded_lines
+  - upgraded_links
+  status:
+  - under_construction
+  - in_permitting
+  - confirmed
+    - planned_not_yet_permitted # include this!
+    #- under_consideration # what about this one?
+  new_link_capacity: zero #keep or zero
+
+sector:
+  gas_network: true
+  H2_retrofit: false # changed to false now - old gaslines to new ones
+  H2_network: false # changed to false now
+  #SMR: false # changed to false now
+  #SMR_cc: false # changed to false now
+  district_heating:
+    ptes:
+      supplemental_heating:
+        enable: true
+        booster_heat_pump: true
+    ates:
+      enable: true
+    heat_pump_sources:
+      urban central:
+      - air
+      - geothermal
+      urban decentral:
+      - air
+      rural:
+      - air
+      - ground
+  hydrogen_turbine: false # true!! now set to false
+  regional_oil_demand: false
+  regional_co2_sequestration_potential:
+    enable: false
+  co2_spatial: false
+  co2_network: false
+  methanol:
+    methanol_to_power:
+      ocgt: false
+    biomass_to_methanol: false
+  ammonia: false # amonia as energy carrier - 
+  biomass_spatial: true # set to true!!!! for biomass potential 
+  biomass_to_liquid: false
+  electrobiofuels: false
+  dac: false #set to false - is true in default
+  hydrogen_fuel_cell: false # inserted and set to false
+  hydrogen_turbine: false # inserted and set to false
+  hydrogen_underground_storage: false # inserted and set to false
+
+
+industry:
+  HVC_environment_sequestration_fraction: 0.5
+  waste_to_energy: true
+  waste_to_energy_cc: true
+
+costs:
+  year: 2035 # set to 2035 - default is 2050
+
+
+solving:
+  tmpdir: '/tmp'
+  
+  #options:
+  #  load_shedding: true # setting to true (for scenario)
+
+  solver:
+    name: gurobi
+    #options: highs-simplex
+  mem: 4000
+
+  check_objective:
+    enable: false
+    expected_value: 6.96e+08
+
+# solver_options:
+#   gurobi-numeric-focus:
+#     BarHomogeneous: 1
+
+# plotting:
+#   map:
+#     boundaries:
+#   eu_node_location:
+#     x: -5.5
+#     y: 46.
+#   costs_max: 1000
+#   costs_threshold: 0.0000001
+#   energy_max:
+#   energy_min:
+#   energy_threshold: 0.000001

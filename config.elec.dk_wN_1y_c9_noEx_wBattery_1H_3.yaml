@@ -1,0 +1,109 @@
+# SPDX-FileCopyrightText: Contributors to PyPSA-Eur <https://github.com/pypsa/pypsa-eur>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+tutorial: true
+
+
+run:
+  name: "elec_dk_wN_1y_c9_noEx_wBattery_1H_3" # use this to keep track of runs with different settings
+  disable_progressbar: true
+  shared_resources:
+    policy: false
+  shared_cutouts: true
+
+scenario:
+  clusters:
+  - 9
+  opts:
+  - ''
+  planning_horizons:
+  - 2025 # setting horizon to 2025
+
+countries: ['NL', 'DE', 'DK', 'SE', 'NO', 'FI', 'GB']
+
+snapshots:
+  start: "2013-01-01"
+  end: "2013-12-31"
+
+electricity:
+  co2limit_enable: true # using an limit based on EU emission and system laod
+  co2limit: 5.46e+9 # limit based on pr country emission intensity (2023) --> for EU-27 average the limit is 1.55e10 kg
+
+  extendable_carriers:
+    Generator: [] #[solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, OCGT, CCGT, nuclear]
+    StorageUnit: [battery] # only include battery to make it feasible
+    Store: [] # removed H2
+    Link: [] # removed H2 pipeline
+
+  renewable_carriers: [solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, hydro] #adding hydro
+  
+  estimate_renewable_capacities:
+    enable: true
+    from_gem: true
+    year: 2020
+    expansion_limit: false
+    technology_mapping:
+      Offshore: offwind-ac
+      Onshore: onwind
+      PV: solar
+  
+  transmission_limit: v1.0 #cannot expand transmission capacity
+
+atlite:
+  default_cutout: europe-2013-sarah3-era5
+  cutouts:
+    europe-2013-sarah3-era5:
+      module: era5
+      x: [-12., 32.0]
+      y: [47.0, 72.0] 
+      time: ["2013-01-01", "2013-12-31"]
+
+# atlite:
+#   default_cutout: europe-2013-03-sarah3-era5
+#   cutouts:
+#     europe-2013-03-sarah3-era5:
+#       module: era5
+#       x: [-12., 32.0]
+#       y: [47.0, 72.0] 
+#       time: ["2013-03-01", "2013-03-08"]
+
+# atlite:
+#   default_cutout: be-03-2013-era5
+#   cutouts:
+#     be-03-2013-era5:
+#       module: era5
+#       x: [4., 15.]
+#       y: [46., 56.]
+#       time: ["2013-03-01", "2013-03-02"]
+
+renewable:
+  offwind-ac:
+    max_depth: false
+  offwind-dc:
+    max_depth: false
+  offwind-float:
+    max_depth: false
+    min_depth: false
+
+
+clustering:
+  exclude_carriers: ["OCGT", "offwind-ac", "coal"]
+  temporal:
+    resolution_elec: 1H
+
+lines:
+  dynamic_line_rating:
+    activate: false
+    #max_line_rating: 1.3
+
+
+solving:
+  tmpdir: '/tmp'
+
+  solver:
+    name: gurobi
+
+  check_objective:
+    enable: false
+    expected_value: 3.8120188094e+07
