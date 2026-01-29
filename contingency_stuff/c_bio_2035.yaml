@@ -1,0 +1,317 @@
+# config file for disruptive events
+# biomass shortage in DK 2035
+
+network_file: "results_cluster/sector_2035_1y_2H/networks/base_s_9___2035.nc" # update path and name
+
+
+load_shedding:
+  elec_cost: 2e4         # €/MWh
+  heat_factor: 5.0       # heat LS = 5 * elec LS
+  add_heat: true         # false for 2025-only-electricity
+  use_lv_buses: true     # true for 2035 sector coupled
+  add_bio: true          # true for 2035 sector coupled
+
+scenarios:
+  
+  ### Base scenarios - no disruptions ###
+  BASE_30d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 1.0
+    start: "2013-01-01"
+    duration_days: 30
+
+  BASE_60d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 1.0
+    start: "2013-01-01"
+    duration_days: 60
+
+  BASE_90d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 1.0
+    start: "2013-01-01"
+    duration_days: 90
+
+  #### DK Shortage ###
+
+  BIO_DK_08_30d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_DK_08_60d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 60
+  
+  BIO_DK_08_90d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 90
+  
+  BIO_DK_06_30d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_DK_06_60d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_DK_06_90d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 90
+
+  BIO_DK_04_30d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_DK_04_60d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_DK_04_90d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 90
+
+  BIO_DK_02_30d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_DK_02_60d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_DK_02_90d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 90
+
+  BIO_DK_00_30d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_DK_00_60d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_DK_00_90d:
+    areas: ["DK1", "DK0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 90
+  
+  ### DK + SE + DE Bio shortage
+  BIO_DKSEDE_08_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_DKSEDE_08_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_DKSEDE_08_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 90
+
+  BIO_DKSEDE_06_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_DKSEDE_06_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_DKSEDE_06_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 90
+  
+  BIO_DKSEDE_04_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_DKSEDE_04_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 60
+  
+  BIO_DKSEDE_04_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 90
+  
+  BIO_DKSEDE_02_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 30
+  
+  BIO_DKSEDE_02_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_DKSEDE_02_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 90
+  
+  BIO_DKSEDE_00_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 30
+  
+  BIO_DKSEDE_00_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_DKSEDE_00_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 90
+  
+  ### Bio shortage DK DE SE GB and FI
+  BIO_ALL_08_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_ALL_08_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_ALL_08_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 90
+
+
+  BIO_ALL_06_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_ALL_06_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_ALL_06_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 90
+
+
+  BIO_ALL_04_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_ALL_04_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_ALL_04_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 90
+
+
+  BIO_ALL_02_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_ALL_02_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_ALL_02_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 90
+
+
+  BIO_ALL_00_30d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 30
+
+  BIO_ALL_00_60d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 60
+
+  BIO_ALL_00_90d:
+    areas: ["DK1", "DK0", "SE1", "DE0", "FI1", "GB2", "GB3"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 90
+
+
+  
+
+
+ 

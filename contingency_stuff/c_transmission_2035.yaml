@@ -1,0 +1,95 @@
+# config file for disruptive events
+# transmission disconnection in DK 2035
+
+
+network_file: "results_cluster/sector_2035_1y_2H/networks/base_s_9___2035.nc" # update path and name
+
+
+load_shedding:
+  elec_cost: 2e4         # €/MWh
+  heat_factor: 5.0       # heat LS = 5 * elec LS
+  add_heat: true         # false for 2025 electricity-only
+  use_lv_buses: true     # true for 2035 (sector coupled)
+  add_bio: true          # true to include biomass load shedding
+
+
+scenarios:
+  BASE_30d:
+    lines: []
+    links: []
+    start: "2013-01-01"
+    duration_days: 30
+
+  BASE_60d:
+    lines: []
+    links: []
+    start: "2013-01-01"
+    duration_days: 60
+
+  BASE_90d:
+    lines: []
+    links: []
+    start: "2013-01-01"
+    duration_days: 90
+
+  ### DK2 disconnected from Sweden (SE)
+  DKSE_30d:
+    lines: ["4"]                # DK2 – SE
+    links: []
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKSE_60d:
+    lines: ["4"]
+    links: []
+    start: "2013-01-01"
+    duration_days: 60
+
+  DKSE_90d:
+    lines: ["4"]
+    links: []
+    start: "2013-01-01"
+    duration_days: 90
+  
+  ### DK2 disconnected from Sweden + Germany (DE)
+  DKSE_DE_30d:
+    lines: ["4"]
+    links: ["relation/2505320-400-DC"]    # DE – DK2
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKSE_DE_60d:
+    lines: ["4"]
+    links: ["relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 60
+  
+  DKSE_DE_90d:
+    lines: ["4"]
+    links: ["relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 90
+  
+  ### DK2 isolated from rest of Europe (island mode)
+  DKSE_DE_DK1_30d:
+    lines: ["4"]
+    links: ["relation/5487095-400-DC","relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKSE_DE_DK1_60d:
+    lines: ["4"]
+    links: ["relation/5487095-400-DC","relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 60
+  
+  DKSE_DE_DK1_90d:
+    lines: ["4"]
+    links: ["relation/5487095-400-DC","relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 90
+
+  
+  
+
+ 

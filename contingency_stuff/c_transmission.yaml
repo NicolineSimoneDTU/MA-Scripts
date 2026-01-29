@@ -1,0 +1,91 @@
+# config file for disruptive events
+# transmission disconnections in DK
+
+network_file: "results_cluster/elec_dk_wN_1y_c9_noEx_wBattery_1H_3/networks/base_s_9_elec_.nc" # update path and name
+
+load_shedding:
+  elec_cost: 2e4          # €/MWh, large but not insane
+  heat_factor: 5.0        # heat LS = 5 * elec LS
+  add_heat: false         # false for 2025-only-electricity
+  use_lv_buses: false     # true for 2035 (sector coupled)
+
+scenarios:
+  ### BASE CASES (no outages, reference prices)
+  BASE_30d:
+    lines: []
+    links: []
+    start: "2013-01-01"
+    duration_days: 30
+
+  BASE_60d:
+    lines: []
+    links: []
+    start: "2013-01-01"
+    duration_days: 60
+
+  BASE_90d:
+    lines: []
+    links: []
+    start: "2013-01-01"
+    duration_days: 90
+
+  ### DK2 isolated from Sweden (SE)
+  DKSE_30d:
+    lines: ["4"]                # DK2 – SE
+    links: []
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKSE_60d:
+    lines: ["4"]
+    links: []
+    start: "2013-01-01"
+    duration_days: 60
+
+  DKSE_90d:
+    lines: ["4"]
+    links: []
+    start: "2013-01-01"
+    duration_days: 90
+  
+  ### DK2 isolated from Sweden + Germany (DE)
+
+  DKSE_DE_30d:
+    lines: ["4"]
+    links: ["relation/2505320-400-DC"]    # DE – DK2
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKSE_DE_60d:
+    lines: ["4"]
+    links: ["relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 60
+  
+  DKSE_DE_90d:
+    lines: ["4"]
+    links: ["relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 90
+  
+  ### DK2 isolated from rest of Europe (island mode)
+
+  DKSE_DE_DK1_30d:
+    lines: ["4"]
+    links: ["relation/5487095-400-DC","relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKSE_DE_DK1_60d:
+    lines: ["4"]
+    links: ["relation/5487095-400-DC","relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 60
+  
+  DKSE_DE_DK1_90d:
+    lines: ["4"]
+    links: ["relation/5487095-400-DC","relation/2505320-400-DC"]
+    start: "2013-01-01"
+    duration_days: 90
+
+  

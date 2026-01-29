@@ -1,0 +1,325 @@
+# config file for disruptive events
+# wind outages in DK
+
+network_file: "results_cluster/elec_dk_wN_1y_c9_noEx_wBattery_1H_3/networks/base_s_9_elec_.nc" # update path and name
+
+load_shedding:
+  elec_cost: 2e4          # €/MWh
+  heat_factor: 5.0        # heat LS = 5 * elec LS
+  add_heat: false         # false for 2025 electricity-only
+  use_lv_buses: false     # true for 2035 (sector coupled)
+
+scenarios:
+  ###### --- BASE --- ######
+  BASE_30d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 1.0
+    start: "2013-01-01"
+    duration_days: 30
+
+  BASE_60d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 1.0
+    start: "2013-01-01"
+    duration_days: 60
+
+  BASE_90d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 1.0
+    start: "2013-01-01"
+    duration_days: 90
+
+  ### --- DK only --- ###
+  DK_10_30d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 1.0
+    start: "2013-01-01"
+    duration_days: 30
+
+  DK_10_60d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 1.0
+    start: "2013-01-01"
+    duration_days: 60
+
+  DK_10_90d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 1.0
+    start: "2013-01-01"
+    duration_days: 90
+
+  DK_08_30d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 30
+
+  DK_08_60d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 60
+
+  DK_08_90d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 90
+
+  DK_06_30d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 30
+
+  DK_06_60d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 60
+
+  DK_06_90d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 90
+
+  DK_04_30d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 30
+
+  DK_04_60d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 60
+
+  DK_04_90d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 90
+
+  DK_02_30d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 30
+
+  DK_02_60d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 60
+
+  DK_02_90d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 90
+
+  DK_00_30d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 30
+
+  DK_00_60d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 60
+
+  DK_00_90d:
+    buses: ["DK1 0", "DK0 0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 90
+
+  ### --- DK + DE ---###
+
+  DKDE_08_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKDE_08_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 60
+
+  DKDE_08_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 90
+
+  DKDE_06_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKDE_06_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 60
+
+  DKDE_06_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 90
+
+  DKDE_04_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKDE_04_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 60
+
+  DKDE_04_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 90
+
+  DKDE_02_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 30 
+  
+  DKDE_02_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 60 
+
+  DKDE_02_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 90
+  
+  DKDE_00_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 30
+  
+  DKDE_00_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 60 
+  
+  DKDE_00_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 90
+  
+  ###--- DK + DE + GB ---###
+
+  DKDEGB_08_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKDEGB_08_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 60
+
+  DKDEGB_08_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.8
+    start: "2013-01-01"
+    duration_days: 90
+
+  DKDEGB_06_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 30
+
+  DKDEGB_06_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 60
+
+  DKDEGB_06_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.6
+    start: "2013-01-01"
+    duration_days: 90
+  
+  DKDEGB_04_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 30
+  
+  DKDEGB_04_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 60 
+  
+  DKDEGB_04_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.4
+    start: "2013-01-01"
+    duration_days: 90 
+  
+  DKDEGB_02_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 30
+  
+  DKDEGB_02_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 60
+  
+  DKDEGB_02_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.2
+    start: "2013-01-01"
+    duration_days: 90
+  
+  DKDEGB_00_30d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 30
+  
+  DKDEGB_00_60d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 60
+  
+  DKDEGB_00_90d:
+    buses: ["DK1 0", "DK0 0", "DE0 0", "GB2 0", "GB3 0"]
+    scaling_factor: 0.0
+    start: "2013-01-01"
+    duration_days: 90
+  
+
