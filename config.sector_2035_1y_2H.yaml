@@ -31,15 +31,12 @@ electricity:
   extendable_carriers:
     Generator: [solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, OCGT, CCGT]
     StorageUnit: []
-    Store: [battery] # H2 #  consider removing this! just H2 in general.... - removed battery from Store 
-    Link: [] # H2 pipeline
+    Store: [battery]
+    Link: [] 
 
   renewable_carriers: [solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, hydro]
 
-  #conventional_carriers: [nuclear, oil, OCGT, CCGT, coal, lignite, geothermal, biomass] - is this nessesary?
-  #renewable_carriers: [solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, hydro] - should i add hydro?
-
-  transmission_limit: v1.0 #not vopt but v1.0 and then planned_no_yet_permitted in transmission projects
+  transmission_limit: v1.0 #only existing and then planned_no_yet_permitted in transmission projects
 
 
 atlite:
@@ -51,14 +48,6 @@ atlite:
       y: [47.0, 72.0] 
       time: ["2013-01-01", "2013-12-31"]
 
-# atlite:
-#   default_cutout: be-03-2013-era5
-#   cutouts:
-#     be-03-2013-era5:
-#       module: era5
-#       x: [4., 15.]
-#       y: [46., 56.]
-#       time: ["2013-03-01", "2013-03-08"]
 
 renewable:
   offwind-ac:
@@ -71,7 +60,7 @@ renewable:
 
 clustering:
   temporal:
-    resolution_sector: 2H
+    resolution_sector: 2H # 2 hour temporal resolution
 
 
 # transmission
@@ -88,16 +77,14 @@ transmission_projects:
   - under_construction
   - in_permitting
   - confirmed
-    - planned_not_yet_permitted # include this!
-    #- under_consideration # what about this one?
-  new_link_capacity: zero #keep or zero
+    - planned_not_yet_permitted #
+    #- under_consideration # 
+  new_link_capacity: zero #
 
 sector:
   gas_network: true
-  H2_retrofit: false # changed to false now - old gaslines to new ones
-  H2_network: false # changed to false now
-  #SMR: false # changed to false now
-  #SMR_cc: false # changed to false now
+  H2_retrofit: false # no retrofit - old gaslines to new ones
+  H2_network: false # no hydrogen network
   district_heating:
     ptes:
       supplemental_heating:
@@ -114,7 +101,7 @@ sector:
       rural:
       - air
       - ground
-  hydrogen_turbine: false # true!! now set to false
+  hydrogen_turbine: false # no hydrogen
   regional_oil_demand: false
   regional_co2_sequestration_potential:
     enable: false
@@ -124,14 +111,14 @@ sector:
     methanol_to_power:
       ocgt: false
     biomass_to_methanol: false
-  ammonia: false # amonia as energy carrier - 
-  biomass_spatial: true # set to true!!!! for biomass potential 
+  ammonia: false # no amonia as energy carrier
+  biomass_spatial: true # for biomass potential 
   biomass_to_liquid: false
   electrobiofuels: false
-  dac: false #set to false - is true in default
-  hydrogen_fuel_cell: false # inserted and set to false
-  hydrogen_turbine: false # inserted and set to false
-  hydrogen_underground_storage: false # inserted and set to false
+  dac: false #no direc air capture
+  hydrogen_fuel_cell: false # no fuel cell
+  hydrogen_turbine: false # no H2 turbine
+  hydrogen_underground_storage: false # no underground storage
 
 
 industry:
@@ -140,14 +127,13 @@ industry:
   waste_to_energy_cc: true
 
 costs:
-  year: 2035 # set to 2035 - default is 2050
+  year: 2035 #
 
 
 solving:
   tmpdir: '/tmp'
   
-  #options:
-  #  load_shedding: true # setting to true (for scenario)
+
 
   solver:
     name: gurobi
@@ -157,18 +143,6 @@ solving:
   check_objective:
     enable: false
     expected_value: 6.96e+08
-
-# solver_options:
-#   gurobi-numeric-focus:
-#     BarHomogeneous: 1
-
-# plotting:
-#   map:
-#     boundaries:
-#   eu_node_location:
-#     x: -5.5
-#     y: 46.
-#   costs_max: 1000
 #   costs_threshold: 0.0000001
 #   energy_max:
 #   energy_min:
